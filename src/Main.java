@@ -6,7 +6,7 @@ public class Main {
         double amountNow = 0;
         double counter = 0;
         while (total >= amountNow) {
-            amountNow = amountNow + amountNow / 100 + depositPerMonth;
+            amountNow += amountNow / 100 + depositPerMonth;
             counter++;
             System.out.println("Месяц " + counter + " : " + amountNow + " рублей");
         }
@@ -24,12 +24,14 @@ public class Main {
         }
         System.out.println();
         System.out.println("Задание 1.3");
-        int country = 12_000_000;
-        int birthPerYear = country / 1000 * 17;
-        int deathPerYear = 8;
+        float country = 12_000_000;
+        float birthPerYear = 17 / 1000F ;
+        float deathPerYear = 8 / 1000F;
         for (int m = 2022; m <= 2032; m++) {
-            country = country + birthPerYear - deathPerYear;
-            System.out.println("Год " + m + " численность населения составляет " + country);
+            float amountOfBirth = country * birthPerYear;
+            float amountOfDeath = country * deathPerYear;
+            country = country + amountOfBirth - amountOfDeath;
+            System.out.println("Год " + m + " численность населения составляет " + Math.round(country));
         }
         System.out.println("Задание 2.1");
         double money = 15_000;
@@ -67,8 +69,10 @@ public class Main {
 
 
         System.out.println("Задание 3.1");
-        for (int cometYear = 0; cometYear <= 2022 + 79; cometYear = cometYear + 79) {
-            if (cometYear > 1822) {
+        int periodStart = 2022 - 200;
+        int periodEnd = 2022 + 100;
+        for (int cometYear = 0; cometYear <= periodEnd; cometYear = cometYear + 79) {
+            if (cometYear > periodStart) {
                 System.out.println(cometYear);
             }
         }
